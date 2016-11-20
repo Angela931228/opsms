@@ -12,3 +12,8 @@ def index(request):
 def detail(request,product_id):
 	product = get_object_or_404(Product, pk=product_id)
 	return render(request, 'sms/detail.html', {'product': product})
+
+def inventory_management(request):
+	product_list= Product.objects.all()
+	context = {'product_list': product_list}
+	return render(request, 'sms/inventory_management.html', context)
