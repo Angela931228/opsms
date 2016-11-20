@@ -6,8 +6,5 @@ source env/bin/activate
 
 pip install -r requirements.txt
 
-//django sitetree
-
-add sitetree in installed app
-
+//migrate db
 python manage.py migrate
