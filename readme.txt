@@ -6,5 +6,7 @@ source env/bin/activate
 
 pip install -r requirements.txt
 
-//migrate db
+
+//update database
+python manage.py makemigrations
 python manage.py migrate

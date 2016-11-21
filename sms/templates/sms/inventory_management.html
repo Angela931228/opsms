@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap Admin Theme v3</title>
+    <title>OP SMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{% static 'sms/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
@@ -52,7 +52,7 @@
 		  	<div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li><a href="/sms/"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
                     <li><a href="/sms/calendar/"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
                     <li class="current"><a href="/sms/inventory_management/"><i class="glyphicon glyphicon-tasks"></i> Inventory Management</a></li>
                     <li><a href="procurement_management.html"><i class="glyphicon glyphicon-tasks"></i>Procurement Management</a></li>
@@ -77,44 +77,130 @@
 		  </div>
 
 		  <div class="col-md-10">
-	<!--	  	<div class="row">
-			  	{% if product_list %}
-		    		<ul>
-		    			{% for product in product_list %}
-		        			<li><a href="/sms/{{ product.id }}/">{{ product.product_name }}</a></li>
-		    			{% endfor %}
-		    		</ul>
-				{% else %}
-		    		<p>No product are available.</p>
-				{% endif %}
-		  	</div>-->
+		  	<div class="row">
 		  		<div class="content-box-large">
-  				<div class="panel-heading">
-					<div class="panel-title">Inventory dataTables</div>
+	  				<div class="panel-heading">
+						<div class="panel-title">Total Inventory </div>
+						<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+						</div>
+					</div>
+	  				<div class="panel-body">
+	  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+							<thead>
+								<tr>
+									<th>Product id</th>
+									<th>Name</th>
+									<th>Category</th>
+									<th>Type Code</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Supplier</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% if product_list %}
+								{% for product in product_list %}
+		    					<tr class="odd gradeX">
+									<td>{{ product.id }}</td>
+									<td>{{product.product_name }}</td>
+									<td>{{product.category}}</td>
+									<td class="center"> {{product.code}}</td>
+									<td class="center"> {{product.price}}</td>
+									<td class="center">200</td>
+									<td class="center"></td>
+		    					</tr>
+		    					{% endfor %}
+							{% endif %}
+							</tbody>
+						</table>
+					</div>
 				</div>
-  				<div class="panel-body">
-  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-						<thead>
-							<tr>
-								<th>Product id</th>
-								<th>Product name</th>
-								<th>price</th>
-								<th>code</th>
-								<th>status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="odd gradeX">
-								<td>1</td>
-								<td>Apple</td>
-								<td>2</td>
-								<td class="center"> 1232134</td>
-								<td class="center">warehouse</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			</div>
+			<div class="row">
+		  		<div class="col-md-6">
+		  			<div class="content-box-large">
+		  				<div class="panel-heading">
+							<div class="panel-title">Warehouse inventory</div>
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+							</div>
+						</div>
+		  				<div class="panel-body">
+		  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
+							<thead>
+								<tr>
+									<th>Product id</th>
+									<th>name</th>
+									<th>Category</th>
+									<th>Type Code</th>
+									<th>Price</th>
+									<th>Status</th>
+									<th>Quantity</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% if product_list %}
+								{% for product in product_list %}
+		    					<tr class="odd gradeX">
+									<td>{{ product.id }}</td>
+									<td>{{product.product_name }}</td>
+									<td>{{product.category}}</td>
+									<td class="center"> {{product.code}}</td>
+									<td class="center"> {{product.price}}</td>
+									<td class="center"> warehouse</td>
+									<td class="center">200</td>
+		    					</tr>
+		    					{% endfor %}
+							{% endif %}
+							</tbody>
+						</table>
+		  				</div>
+		  			</div>
+		  		</div>
 
+		  		<div class="col-md-6">
+		  			<div class="content-box-large">
+		  				<div class="panel-heading">
+							<div class="panel-title">Shelf inventory</div>
+							
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+							</div>
+						</div>
+		  				<div class="panel-body">
+							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
+								<thead>
+									<tr>
+										<th>Product id</th>
+										<th>name</th>
+										<th>Category</th>
+										<th>Type Code</th>
+										<th>Price</th>
+										<th>Status</th>
+										<th>Quantity</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% if product_list %}
+									{% for product in product_list %}
+			    					<tr class="odd gradeX">
+										<td>{{ product.id }}</td>
+										<td>{{product.product_name }}</td>
+										<td>{{product.category}}</td>
+										<td class="center"> {{product.code}}</td>
+										<td class="center"> {{product.price}}</td>
+										<td class="center"> warehouse</td>
+										<td class="center">200</td>
+			    					</tr>
+			    					{% endfor %}
+								{% endif %}
+								</tbody>
+							</table>
+		  				</div>
+		  			</div>
+		  		</div>
+		  	 </div>
 		</div>
     </div>
 
@@ -122,7 +208,7 @@
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Angela ZHOU Anqi 2016 <a href='#'>Website</a>
             </div>
             
          </div>
@@ -132,6 +218,12 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'sms/bootstrap/js/bootstrap.min.js'%}"></script>
+
+   <script src="{% static 'sms/vendors/datatables/js/jquery.dataTables.min.js'%}"></script>
+
+    <script src="{% static 'sms/vendors/datatables/dataTables.bootstrap.js'%}"></script>
+
     <script src="{% static 'sms/js/custom.js'%}"></script>
+    <script src="{% static 'sms/js/tables.js'%}"></script>
   </body>
 </html>

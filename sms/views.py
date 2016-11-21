@@ -17,3 +17,8 @@ def inventory_management(request):
 	product_list= Product.objects.all()
 	context = {'product_list': product_list}
 	return render(request, 'sms/inventory_management.html', context)
+
+def calendar(request):
+	product_list= Product.objects.all()
+	context = {'product_list': product_list}
+	return render(request, 'sms/calendar.html', context)
