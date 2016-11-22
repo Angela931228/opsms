@@ -22,3 +22,8 @@ def calendar(request):
 	product_list= Product.objects.all()
 	context = {'product_list': product_list}
 	return render(request, 'sms/calendar.html', context)
+
+def sales_analysis(request):
+	product_list= Product.objects.all()
+	context = {'product_list': product_list}
+	return render(request, 'sms/stats.html', context)
