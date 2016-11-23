@@ -1,5 +1,12 @@
 $(document).ready(function() {
-        $('#example').dataTable();
-        $('#example1').dataTable();
-        $('#example2').dataTable();
+        $('#example').dataTable({
+        	"iDisplayLength": 5
+        });
+        $('#example1').dataTable({
+        	"iDisplayLength": 5
+        });
+
+        $('#example2').dataTable({
+        	"iDisplayLength": 5
+        });
 } );

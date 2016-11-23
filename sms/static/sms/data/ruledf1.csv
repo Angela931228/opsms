@@ -1,0 +1,12 @@
+"lhs","rhs","support","confidence","lift"
+"{domestic eggs}","{whole milk}",0.03,0.4728,1.8502
+"{domestic eggs}","{other vegetables}",0.0223,0.351,1.8138
+"{domestic eggs}","{rolls/buns}",0.0157,0.2468,1.3418
+"{domestic eggs}","{root vegetables}",0.0143,0.226,2.0731
+"{domestic eggs}","{yogurt}",0.0143,0.226,1.6198
+"{domestic eggs}","{soda}",0.0124,0.1955,1.1212
+"{domestic eggs}","{tropical fruit}",0.0114,0.1795,1.7105
+"{domestic eggs}","{citrus fruit}",0.0104,0.1635,1.975
+"{domestic eggs}","{whipped/sour cream}",0.01,0.1571,2.1909
+"{domestic eggs}","{butter}",0.0097,0.1522,2.7474
+"{domestic eggs}","{sausage}",0.0096,0.1506,1.6034
