@@ -29,4 +29,7 @@ $(document).ready(function(){
                 });
             })
     }
+    $('#expiryTable').dataTable({
+            "iDisplayLength": 10
+    });
 });

@@ -75,11 +75,11 @@
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
-                         <ul>
-                            <li><a href="login.html">Sales report</a></li>
+                        <ul>
+                            <li><a href="/sms/sales_management/sales_analysis/">Sales report</a></li>
                             <li><a href="/sms/sales_management/sales_analysis/">Sales analysis</a></li>
-                            <li><a href="/sms/sales_management/mb_analysis/">Market basket Analysis</a></li>
-                            <li><a href="/sms/sales_management/promo_opps/">Promotion activity</a></li>
+                            <li><a href="/sms/sales_management/promo_analysis/">Promotion activity</a></li>
+                            <li><a href="/sms/sales_management/cal_pur/">Calculate and purchase</a></li>
                         </ul>
                     </li>
 
@@ -102,13 +102,50 @@
 		  	<div class="content-box-large">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">Promotion activity management</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-12  col-md-6">
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Existing Promotion activities
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i> Thanksgiving sales 
+                                    <span class="pull-right text-muted small"><em>Nov 22th- Nov 25th (ended)</em>
+                                    </span>
+                                </a>
+                                {% if event_list%}
+                                    {% for event in event_list %}
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i>  {{event.name}}
+                                    <span class="pull-right text-muted small"><em>{{event.start_date}} - {{event.end_date}}</em>
+                                    </span>
+                                </a>
+                                    {% endfor %}
+                                {%endif%}
+
+
+                            </div>
+                            <!-- /.list-group -->
+                            <a href="/sms/sales_management/proact_management/" class="btn btn-default btn-block">View All promotion activities</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                 
+                   </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -116,21 +153,21 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Mail</div>
-                                    <div>12 new</div>
+                                    <div class="huge">Buddling sales</div>
+                                    <div>14 new items</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="/sms/sales_management/buddling_sales/">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Create event</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -138,21 +175,90 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Approval</div>
-                                    <div>2 new</div>
+                                    <div class="huge">Markdowns</div>
+                                    <div>2 new items</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="/sms/approval/">
+                        <a href="/sms/sales_management/markdowns/">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Create event</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-calendar fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Direct marketing</div>
+                                    <div>14 new items</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/sms/calendar/">
+                            <div class="panel-footer">
+                                <span class="pull-left">Create event</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Expiry food discount</div>
+                                    <div>12 new items</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/sms/sales_management/expiry_food_discount/">
+                            <div class="panel-footer">
+                                <span class="pull-left">Create event</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Customer credit reward</div>
+                                    <div>2 new</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/sms/approval/">
+                            <div class="panel-footer">
+                                <span class="pull-left">Create event</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
@@ -174,31 +280,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">Support Ticket</div>
-                                    <div>13 new</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
             </div>
-            <!-- /.row -->
-           s
             </div>
         </div>
   
