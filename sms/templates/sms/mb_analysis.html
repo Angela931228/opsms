@@ -67,6 +67,7 @@
                          <ul>
                             <li><a href="login.html">Sales report</a></li>
                             <li><a href="/sms/sales_management/sales_analysis/">Sales analysis</a></li>
+                            <li><a href="/sms/sales_management/mb_analysis/">Market basket Analysis</a></li>
                         </ul>
                     </li>
                     <li><a href="chain_management.html"><i class="glyphicon glyphicon-tasks"></i> Chain Management</a></li>
@@ -106,16 +107,17 @@
 								</tr>
 							</thead>
 							<tbody>
-							
-								{% for rule in rule_list %}
-		    					<tr class="odd gradeX">
-									<td>{{ rule.lhs}}</td>
-									<td>{{ rule.rhs }}</td>
-									<td>{{ rule.support }}</td>
-									<td class="center"> {{ rule.confidence}}</td>
-									<td class="center"> {{ rule.lift}}</td>
-		    					</tr>
-		    					{% endfor %}
+								{% if rule_list%}
+									{% for rule in rule_list %}
+			    					<tr class="odd gradeX">
+										<td>{{ rule.lhs}}</td>
+										<td>{{ rule.rhs }}</td>
+										<td>{{ rule.support }}</td>
+										<td class="center"> {{ rule.confidence}}</td>
+										<td class="center"> {{ rule.lift}}</td>
+			    					</tr>
+			    					{% endfor %}
+			    				{%endif%}
 							</tbody>
 						</table>
 					</div>

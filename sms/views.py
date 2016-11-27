@@ -5,6 +5,7 @@ import pandas as pd
 from .apriori import processApriori
 import numpy as np
 import csv
+from multiprocessing import Pool
 # Create your views here.
 
 
@@ -33,8 +34,10 @@ def sales_analysis(request):
 	return render(request, 'sms/sales_analysis.html', context)
 
 def mb_analysis(request):
+	pool = Pool(processes=1) 
 	args = ['0','0.001', '0.8','9835','whole milk', 'whole milk']
-	processApriori(args)
+	#processApriori(args)
+	pool.apply_async(processApriori, args, ) 
 	rule_list  = readData('ruledf.csv')
     	rule_list1 = readData('ruledf1.csv')
 	rule_list2 = readData('ruledf2.csv')
@@ -44,6 +47,11 @@ def mb_analysis(request):
 		'rule_list2':rule_list2
     	}
 	return render(request, 'sms/mb_analysis.html', context)
+
+def promo_analysis(request):
+	product_list= Product.objects.all()
+	context = {'product_list': product_list}
+	return render(request, 'sms/promo_analysis.html', context)
 
 def readData(fname):
 	rule_list = []
