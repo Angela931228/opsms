@@ -13,6 +13,7 @@ class Product(models.Model):
     expiry_date = models.DateField(default=datetime.now, blank=True)
     discount_rate = models.FloatField(default=1.0)
     markdown = models.IntegerField(default=1)
+    inventory = models.IntegerField(default=1)
     def __str__(self):
         return self.product_name
     def _get_total(self):
@@ -25,6 +26,8 @@ class Promo_event(models.Model):
     event_type= models.CharField(max_length=200)
     start_date   = models.DateField(default=datetime.now, blank=True)
     end_date   = models.DateField(default=datetime.now, blank=True)
+    status = models.CharField(default='active', max_length=200)
+    priority = models.IntegerField(default=1)
     def __str__(self):
         return self.name
 class DiscoutingTable(models.Model):

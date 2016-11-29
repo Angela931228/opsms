@@ -1,2 +1,4 @@
 Django
-django-mathfilters
+multiprocessing
+csv
+subprocess

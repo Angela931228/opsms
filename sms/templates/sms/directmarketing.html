@@ -99,102 +99,63 @@
         <div class="col-md-12">
           <div class="content-box-large">
             <div class="panel-heading">
-            <div class="panel-title">Products expire soon </div>
+            <div class="panel-title">User recommendations</div>
             <div class="panel-options">
                 <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
             </div>
           </div>
             <div class="panel-body">
-            <table cellpadding="0" cellspacing="0" border="0" class="display" cellspacing="0" id="expiryTable">
+            <div class="row">
+            <table cellpadding="0" cellspacing="0" border="0" class="display" cellspacing="0" id="markdownTable">
               <thead>
                 <tr>
                   <th><input type="checkbox" name="select_all" value="0" id="select-all"> </th>
-                  <th>name</th>
-                  <th>code</th>
-                  <th>price</th>
-                  <th>discount rate</th>
-                  <th>expiry date</th>
-                  <th>Inventory</th>
+                  <th>User id</th>
+                  <th>Name</th>
+                  <th>items interested</th>
+                  <th>possibility</th>
                   <!--<th>current price</th>-->
                 </tr>
               </thead>
               <tbody>
-                {% if product_list%}
-                  {% for product in product_list %}
-                    {%ifequal product.discount_rate 1.0%}
                       <tr class="odd gradeX">
-                        <td><input type="checkbox" name="{{ product.id}}" value="{{ product.id}}" id="select-all"></td>
-                        <td>{{ product.product_name}}</td>
-                        <td>{{ product.code}}</td>
-                        <td>{{ product.price}}</td>
-                        <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
-                        <td> {{ product.discount_rate}}</td>
-                        <td> {{ product.expiry_date}}</td>
-                        <td> {{ product.inventory}}</td>
-                        <!--<td> {{ product.price|mul:product.discount_rate }}</td>-->
+                        <td><input type="checkbox" name="mk" value="mk" ></td>
+                        <td>1 </td>
+                        <td>John Snow </td>
+                        <td>red/blush wine, pizza</td>
+                        <td>92%</td>
                       </tr>
-                      {% endifequal %}
-                      {% endfor %}
-                  {%endif%}
+                      <tr class="odd gradeX">
+                        <td><input type="checkbox" name="mk" value="mk" ></td>
+                        <td>2 </td>
+                        <td>Agnes Chan</td>
+                        <td>liquor</td>
+                        <td>86%</td>
+                      </tr>
               </tbody>
             </table>
-            <div>
-                <p>Name: <input type="text" name="event_name" id = "event_name"> </p>
-                <p>Discount: <input type="text" name="discount_rate" id = "discount_rate"> </p>
-                <p>Priority: <input type="text" name="priority" id = "priority"> </p>
-                <p>Start time: <input type="date" name="start_date" id = "start_date"> </p>
-                <p> End time: <input type="date" name="end_date" id = "end_date"></p>
-                <button class="btn btn-primary btn-xs" >Submit</button>
-           </div>
+            </div>
+        <div class="col-md-6">
+                            <p>Name: <input type="text" name="event_name" id = "event_name"> </p>
+                            <p>Discount: <input type="text" name="discount_rate" id = "discount_rate"> </p>
+                            <p>Priority: <input type="text" name="priority" id = "priority"> </p>
+                            <p>Send time: <input type="date" name="start_date" id = "start_date"> </p>
+                            <p>Send frequency:
+                                <ul>
+                                <li><input type="checkbox" name="mk" value="mk" > Only once </li>
+                                <li><input type="checkbox" name="mk" value="mk" > Daily</li>
+                                <li><input type="checkbox" name="mk" value="mk" > Weekly</li>
+                                <li><input type="checkbox" name="mk" value="mk" > Monthly</li>
+                                </ul>
+                            </p>
+                            <button class="btn btn-primary btn-xs" >Submit</button>
+                  </div>
            </div>
 
              
         </div>
       </div>
 
-      <div class="col-md-12">
-          <div class="content-box-large">
-            <div class="panel-heading">
-            <div class="panel-title">Product in discounting </div>
-            <div class="panel-options">
-                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-            </div>
-          </div>
-            <div class="panel-body">
-           <table cellpadding="0" cellspacing="0" border="0" class="display" cellspacing="0" id="discountedTable">
-              <thead>
-                <tr>
-                  <th>name</th>
-                  <th>code</th>
-                  <th>price</th>
-                  <th>discount rate</th>
-                  <th>expiry date</th>
-                  <th>Inventory</th>
-                  <!--<th>current price</th>-->
-                </tr>
-              </thead>
-              <tbody>
-                {% if product_list%}
-                  {% for product in product_list %}
-                    {%if product.discount_rate != 1%}
-                      <tr class="odd gradeX">
-                        <td>{{ product.product_name}}</td>
-                        <td>{{ product.code}}</td>
-                        <td>{{ product.price}}</td>
-                        <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
-                        <td> {{ product.discount_rate}}</td>
-                        <td> {{ product.expiry_date}}</td>
-                        <td> {{ product.inventory}}</td>
-                        <!--<td> {{ product.price|mul:product.discount_rate }}</td>-->
-                      </tr>
-                      {% endif %}
-                      {% endfor %}
-                  {%endif%}
-              </tbody>
-            </table>
-      </div>
-        </div>
-        </div>
         </div>
    
 		 </div>
@@ -222,6 +183,6 @@
     <script src="{% static 'sms/vendors/datatables/dataTables.bootstrap.js'%}"></script>
 
     <script src="{% static 'sms/js/custom.js'%}"></script>
-    <script src="{% static 'sms/js/expiry_discount.js'%}"></script>
+    <script src="{% static 'sms/js/directmarketing.js'%}"></script>
   </body>
 </html>

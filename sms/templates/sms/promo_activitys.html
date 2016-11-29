@@ -104,6 +104,8 @@
             <div class="panel-heading">
             <div class="panel-title">All promotion events</div>
             <div class="panel-options">
+                  <input type="text" id="searchtext" class="searchtext"/>
+                  <button class="btn btn-primary btn-xs search" id="search" > Search</button>
                 <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
             </div>
           </div>
@@ -116,6 +118,8 @@
                   <th>type</th>
                   <th>start date</th>
                   <th>end date</th>
+                  <th>Priority</th>
+                  <th>status</th>
                   <th>Action</th>
                   <!--<th>current price</th>-->
                 </tr>
@@ -130,19 +134,61 @@
                       <td>{{ event.start_date}}</td>
                       <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
                       <td> {{ event.end_date}}</td>
+                      <td> {{ event.priority}}</td>
+                      <td> {{ event.status}}</td>
                       <td> 
-                            <button class="btn btn-primary btn-xs" >Edit</button>
-                            <button class="btn btn-primary btn-xs" >Delete</button>
-                            <button class="btn btn-primary btn-xs" >Reopen</button>
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
+                            <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
+                            <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
+                            <button class="btn btn-primary btn-xs reopen" id="{{ event.id}}">Reopen</button>
                       <td>
 
                     </tr>
                     {% endfor %}
                   {%endif%}
+                    <tr class="odd gradeX">
+                      <td>6</td>
+                      <td>Thanksgiving sales</td>
+                      <td>Special day sales</td>
+                      <td>Nov. 22, 2016</td>
+                      <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
+                      <td> Nov. 29, 2016</td>
+                      <td> 1</td>
+                      <td> Closed</td>
+                      <td> 
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
+                            <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
+                            <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
+                            <button class="btn btn-primary btn-xs reopen" id="{{ event.id}}">Reopen</button>
+                      <td>
+
+                    </tr>
+                    <tr class="odd gradeX">
+                      <td>5</td>
+                      <td>Customer recommendation email</td>
+                      <td>direct marketing</td>
+                      <td>Nov. 28, 2016</td>
+                      <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
+                      <td> Nov. 28, 2016</td>
+                      <td> 0</td>
+                      <td> Closed</td>
+                      <td> 
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
+                            <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
+                            <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
+                            <button class="btn btn-primary btn-xs reopen" id="{{ event.id}}">Reopen</button>
+                      <td>
+
+                    </tr>
               </tbody>
             </table>
         </div>
       </div>
+        </div>
+        <div class="row" id="dis_detail">
         </div>
   
          </div>
@@ -164,5 +210,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'sms/bootstrap/js/bootstrap.min.js'%}"></script>
     <script src="{% static 'sms/js/custom.js'%}"></script>
+    <script src="{% static 'sms/js/pro_activities.js'%}"></script>
   </body>
 </html>

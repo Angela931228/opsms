@@ -1,0 +1,39 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table" cellspacing="0" >
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>type</th>
+                  <th>start date</th>
+                  <th>end date</th>
+                  <th>Priority</th>
+                  <th>status</th>
+                  <th>Action</th>
+                  <!--<th>current price</th>-->
+                </tr>
+              </thead>
+              <tbody>
+                {% if event_list%}
+                  {% for event in event_list %}
+                    <tr class="odd gradeX">
+                      <td>{{ event.id}}</td>
+                      <td>{{ event.name}}</td>
+                      <td>{{ event.event_type}}</td>
+                      <td>{{ event.start_date}}</td>
+                      <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
+                      <td> {{ event.end_date}}</td>
+                      <td> {{ event.priority}}</td>
+                      <td> {{ event.status}}</td>
+                      <td> 
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
+                            <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
+                            <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
+                            <button class="btn btn-primary btn-xs reopen" id="{{ event.id}}">Reopen</button>
+                      <td>
+
+                    </tr>
+                    {% endfor %}
+                  {%endif%}
+                </tbody>
+</table>

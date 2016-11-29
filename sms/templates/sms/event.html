@@ -1,0 +1,33 @@
+          <div class="content-box-large">
+            <div class="panel-body">
+            <table cellpadding="0" cellspacing="0" border="0" class="table" cellspacing="0" >
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>code</th>
+                  <th>price</th>
+                  <th>discount rate</th>
+                  <th>expiry date</th>
+                  <!--<th>current price</th>-->
+                </tr>
+              </thead>
+              <tbody>
+                {% if dtList%}
+                  {% for dt in dtList %}
+                    <tr class="odd gradeX">
+                     <td>{{ dt.product_id.id}}</td>
+                      <td>{{ dt.product_id.product_name}}</td>
+                      <td>{{ dt.product_id.code}}</td>
+                      <td>{{ dt.product_id.price}}</td>
+                      <td> {{ dt.discount_rate}}</td>
+                      <td> {{ dt.product_id.expiry_date}}</td>
+                    </tr>
+                    {% endfor %}
+                  {%endif%}
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+  

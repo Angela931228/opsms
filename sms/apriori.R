@@ -60,15 +60,15 @@ calRight<-function(){
     write.csv(ruledf,"./sms/static/sms/data/ruledf2.csv", row.names = FALSE)
 }
 if(m==1){
-  calAll()
+    calAll()
 }else if(m==2){
-  calLeft()
+    calLeft()
 }else if(m==3){
-  calRight()
+    calRight()
 }else{
-  calAll()
-  calLeft()
-  calRight()
+    calAll()
+    calLeft()
+    calRight()
 }
 
 

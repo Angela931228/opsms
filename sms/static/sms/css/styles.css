@@ -6,7 +6,9 @@ body {
   font-size: 12px;
   padding: 0px;
 }
-
+#itemPrice{
+  visibility:hidden;
+}
 .page-content > .row {
   margin-left: 0px !important;
   margin-right: 0px !important;
@@ -780,7 +782,7 @@ body {
 }
 
 .huge {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .panel-green {
