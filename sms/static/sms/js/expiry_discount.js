@@ -1,6 +1,10 @@
 $(document).ready(function() {
+		td = moment(new Date()).format('YYYY-MM-DD');
+	 	$('#start_date').val(td)
+	 	$('#end_date').val(td)
+
         var table =  $('#expiryTable').DataTable( {
-        		"aaSorting": [[ 5, "asc" ]]
+        		"aaSorting": [[ 6, "asc" ]]
         } );
        $('#discountedTable').DataTable( {
      
@@ -19,11 +23,11 @@ $(document).ready(function() {
 	         var priority = $('#priority').val();
 	         var end_date = $('#end_date').val();
 	         var event_name = $('#event_name').val();
-	 		 console.log(data);
+	         var staff = $('#staff').val();
 	        $.ajax({
 			        type: 'POST',
 			        url: '/sms/sales_management/expiry_food_discount/',
-			        data:  JSON.stringify({'data':data,'event_name':event_name,'priority':priority,'discount_rate':discount,'start_date':start_date,'end_date':end_date}),
+			        data:  JSON.stringify({'data':data,'event_name':event_name,'priority':priority,'discount_rate':discount,'start_date':start_date,'end_date':end_date,'staff':staff}),
 			        dataType: 'json',
 			        success: function(data){
 			                 if (data.status == 1) {

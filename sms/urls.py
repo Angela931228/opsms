@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^sales_management/proact_reopen',views.proact_reopen,name ='proact_reopen'),
     url(r'^sales_management/proact_search',views.proact_search,name ='proact_search'),
     url(r'^sales_management/proact_editview(?P<event_id>[0-9]+)/',views.proact_edit,name ='proact_edit'),
+    url(r'^sales_management/proact_edit/',views.proact_form,name ='proact_form'),
     url(r'^sales_management/markdowns',views.markdowns,name ='markdowns'),
     url(r'^sales_management/proact_view(?P<event_id>[0-9]+)/',views.proact_view,name ='proact_management')
 ]

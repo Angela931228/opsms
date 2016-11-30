@@ -9,8 +9,11 @@
     <link href="{% static 'sms/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
     <!-- styles -->
     <link href="{% static 'sms/vendors/jquery-ui.css'%}" rel="stylesheet" media="screen">
-    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
-    <link href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css" rel="stylesheet" media="screen">
+        <link href="{% static 'sms/vendors/jquery.dataTables.min.css'%}" rel="stylesheet" media="screen">
+        <link href="{% static 'sms/vendors/select.dataTables.min.css'%}" rel="stylesheet" media="screen">
+
+    <!--<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+    <link href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css" rel="stylesheet" media="screen">-->
     <!-- styles -->
     <link href="{% static 'sms/css/styles.css'%}" rel="stylesheet">
 
@@ -60,10 +63,61 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="/sms/"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="/sms/inventory_management/"><i class="glyphicon glyphicon-tasks"></i> Inventory Management</a></li>
-                    <li><a href="procurement_management.html"><i class="glyphicon glyphicon-tasks"></i>Procurement Management</a></li>
-                    <li><a href="staff_management.html"><i class="glyphicon glyphicon-tasks"></i> Staff Management</a></li>
-                    <li><a href="financial_management.html"><i class="glyphicon glyphicon-tasks"></i>Financial Management</a></li>
+
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Procurement Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="login.html">Supplier management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Procurement plan</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Assortment planning</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Purchase order management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Delivery tracking</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Goods reciepts management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Procurement return/replacement</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Inventory Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/sms/inventory_management/">stock management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">product managemenr</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Staff Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/staff_list">Staff list</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Role management</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Financial Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/staff_list">Income and expenses</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Cash flow management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Financial statement</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Payroll management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Product pricing</a></li>
+                        </ul>
+                    </li>
                     <li><a href="customer_management.html"><i class="glyphicon glyphicon-tasks"></i> Customer Management</a></li>
                     <li class="submenu">
                          <a href="#">
@@ -140,6 +194,8 @@
                             <p>Discount: <input type="text" name="discount_rate" id = "discount_rate"> </p>
                             <p>Priority: <input type="text" name="priority" id = "priority"> </p>
                             <p>Send time: <input type="date" name="start_date" id = "start_date"> </p>
+                            <p> Staff in charge: <input type="text" name="staff" id = "staff" > (*Staff will be notified by the event change)</p>
+
                             <p>Send frequency:
                                 <ul>
                                 <li><input type="checkbox" name="mk" value="mk" > Only once </li>

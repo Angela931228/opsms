@@ -6,6 +6,7 @@ from datetime import datetime
 # Create your models here.
 class Product(models.Model):
     product_name = models.CharField(max_length=200)
+    batch_id = models.IntegerField(default=1)
     category= models.CharField(max_length=200)
     code   = models.CharField(max_length=200)
     status   = models.CharField(max_length=200)
@@ -28,6 +29,7 @@ class Promo_event(models.Model):
     end_date   = models.DateField(default=datetime.now, blank=True)
     status = models.CharField(default='active', max_length=200)
     priority = models.IntegerField(default=1)
+    staff = models.CharField(default=' ', max_length=200)
     def __str__(self):
         return self.name
 class DiscoutingTable(models.Model):

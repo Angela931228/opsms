@@ -1,11 +1,14 @@
 $(document).ready(function() {
+
 		$('.edit').click( function() {
 			idx = this.id
 	         $.ajax({
 			        type: 'get',
 			        url: '/sms/sales_management/proact_editview'+idx,
 			        success: function(data){
-			        	  $('#dis_detail').html(data)
+           				 // data.redirect contains the string URL to redirect to
+          						  //window.location.href = window.location.host+ '/sms/sales_management/promo_analysis';
+          				document.location.href = '/sms/sales_management/proact_editview'+idx;
 			        }
    			});
 	        return false;
@@ -95,4 +98,5 @@ $(document).ready(function() {
    			});
 	        return false;
     	} );
+       
 } );

@@ -10,12 +10,7 @@
     <link href="{% static 'sms/css/styles.css'%}" rel="stylesheet">
     <link href="{% static 'sms/vendors/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+
   </head>
   <body>
   	<div class="header">
@@ -54,8 +49,36 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="/sms/"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="/sms/inventory_management/"><i class="glyphicon glyphicon-tasks"></i> Inventory Management</a></li>
-                    <li><a href="procurement_management.html"><i class="glyphicon glyphicon-tasks"></i>Procurement Management</a></li>
+
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Procurement Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="login.html">Supplier management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Procurement plan</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Assortment planning</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Purchase order management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Delivery tracking</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Goods reciepts management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Procurement return/replacement</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Inventory Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/sms/inventory_management/">stock management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">product managemenr</a></li>
+                        </ul>
+                    </li>
+
                     <li class="submenu">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Staff Management
@@ -63,11 +86,24 @@
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li><a href="login.html">Staff list</a></li>
+                            <li><a href="/staff_list">Staff list</a></li>
                             <li><a href="/sms/sales_management/sales_analysis/">Role management</a></li>
                         </ul>
                     </li>
-                    <li><a href="financial_management.html"><i class="glyphicon glyphicon-tasks"></i>Financial Management</a></li>
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Financial Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/staff_list">Income and expenses</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Cash flow management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Financial statement</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Payroll management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Product pricing</a></li>
+                        </ul>
+                    </li>
                     <li><a href="customer_management.html"><i class="glyphicon glyphicon-tasks"></i> Customer Management</a></li>
                     <li class="submenu">
                          <a href="#">
@@ -120,6 +156,7 @@
                   <th>end date</th>
                   <th>Priority</th>
                   <th>status</th>
+                  <th>staff</th>
                   <th>Action</th>
                   <!--<th>current price</th>-->
                 </tr>
@@ -136,8 +173,9 @@
                       <td> {{ event.end_date}}</td>
                       <td> {{ event.priority}}</td>
                       <td> {{ event.status}}</td>
+                      <td> {{ event.staff}}</td>
                       <td> 
-                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >View</button>
                             <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
                             <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
                             <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
@@ -153,11 +191,12 @@
                       <td>Special day sales</td>
                       <td>Nov. 22, 2016</td>
                       <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
-                      <td> Nov. 29, 2016</td>
+                      <td> Nov. 30, 2016</td>
                       <td> 1</td>
-                      <td> Closed</td>
+                      <td> closed</td>
+                      <td>Angela Zhou</td>
                       <td> 
-                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >View</button>
                             <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
                             <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
                             <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
@@ -169,13 +208,14 @@
                       <td>5</td>
                       <td>Customer recommendation email</td>
                       <td>direct marketing</td>
-                      <td>Nov. 28, 2016</td>
+                      <td>Nov. 29, 2016</td>
                       <!--<td><input type="text" id="row_{{ product.id}}" name="row_{{ product.id}}" value="{{product.discount_rate}}"></td>-->
-                      <td> Nov. 28, 2016</td>
+                      <td> Nov. 29, 2016</td>
                       <td> 0</td>
-                      <td> Closed</td>
+                      <td> closed</td>
+                      <td> Andy Hui</td>
                       <td> 
-                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view detail</button>
+                            <button class="btn btn-primary btn-xs view_detail" id="{{ event.id}}" >view</button>
                             <button class="btn btn-primary btn-xs edit" id="{{ event.id}}" >Edit</button>
                             <button class="btn btn-primary btn-xs delete" id="{{ event.id}}">Delete</button>
                             <button class="btn btn-primary btn-xs pause" id="{{ event.id}}">Pause</button>
@@ -206,7 +246,7 @@
       </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="{% static 'sms/vendors/jquery.js'%}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'sms/bootstrap/js/bootstrap.min.js'%}"></script>
     <script src="{% static 'sms/js/custom.js'%}"></script>

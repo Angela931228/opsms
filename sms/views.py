@@ -7,7 +7,9 @@ import csv
 from multiprocessing import Pool
 import json
 from itertools import chain
-import datetime
+from datetime import date, datetime
+from dateutil import parser
+
 # Create your views here.
 
 
@@ -36,7 +38,7 @@ def mb_analysis(request):
 	if request.method == 'POST':
 		print request.body
 		data = json.loads(request.body)
-		p = Promo_event(name=data['event_name'], event_type='Buddle selling', priority=data["priority"],start_date=data["start_date"], end_date=data["end_date"])
+		p = Promo_event(name=data['event_name'], event_type='Buddle selling', priority=data["priority"],start_date=data["start_date"], end_date=data["end_date"], staff = data["staff"])
 		p.save()
 		for  item in  data['data']:
 				x = Product.objects.get(product_name=item['name'])
@@ -94,7 +96,7 @@ def expiry_food_discount(request):
 	if request.method == 'POST':
 		print request.body
 		data = json.loads(request.body)
-		p = Promo_event(name=data['event_name'], event_type='discounting', start_date=data["start_date"], end_date=data["end_date"], priority=data["priority"])
+		p = Promo_event(name=data['event_name'], event_type='discounting', start_date=data["start_date"], end_date=data["end_date"], priority=data["priority"], staff = data["staff"])
 		p.save()
 		for  item in  data['data']:
 				x = get_object_or_404(Product, pk=item['value'])
@@ -109,6 +111,17 @@ def expiry_food_discount(request):
 
 def proact_management(request):
 	event_list= Promo_event.objects.all().order_by('id').reverse()
+	for event in event_list:
+		if event.end_date < date.today():
+			event.status = 'closed'
+			event.save()
+		elif event.start_date > date.today():
+			event.status = 'Coming'
+			event.save()
+		elif event.status!='paused':
+			event.status = 'active'
+			event.save()
+
 	context = {'event_list': event_list}
 	return render(request, 'sms/promo_activitys.html', context)
 
@@ -122,7 +135,7 @@ def proact_pause(request):
 	if request.method == 'POST':
 		data = json.loads(request.body)
 		p = Promo_event.objects.get(id=data['data'])
-		p.status = 'pause'
+		p.status = 'paused'
 		p.save()
 		response = {'status': 1, 'message': "Ok"}
 		return HttpResponse(json.dumps(response), content_type='application/json')
@@ -138,8 +151,6 @@ def proact_reopen(request):
 def proact_search(request):
 	if request.method == 'POST':
 		data = json.loads(request.body)
-
-
 		p = Product.objects.get(product_name =data['data'])
 		dt = DiscoutingTable.objects.get(product_id=p)
 		return HttpResponse(json.dumps(response), content_type='application/json')
@@ -150,13 +161,41 @@ def proact_edit(request,event_id):
 	dtList = DiscoutingTable.objects.filter(promo_event_id=event_id)
 	dt = dtList.first()
 	discount_rate = dt.discount_rate
+	start_date = datetime.strptime(str(event.start_date), "%Y-%m-%d")
+	print start_date
 	context = {
 			'event' :event,
 			'dtList' :dtList,
-			'discount_rate':discount_rate
+			'discount_rate':discount_rate,
+			'start_date':start_date
 	}
 
 	return render(request, 'sms/pro_form.html', context)
+def proact_form(request):
+	if request.method == 'POST':
+		print request.body
+		data = json.loads(request.body)
+		#p = Promo_event(name=data['event_name'], event_type='discounting', start_date=data["start_date"], end_date=data["end_date"], priority=data["priority"])
+		p = Promo_event.objects.get(id=data['event_id'])
+		p.discount_rate = data['discount_rate']
+		p.start_date = data['start_date']
+		p.end_date = data['end_date']
+		p.event_name = data['event_name']
+		p.priority = data['priority']
+		p.staff = data['staff']
+		p.save()
+		dtList = DiscoutingTable.objects.filter(promo_event_id=data['event_id'])
+		for  dt in  dtList:
+				dt.discount_rate = data['discount_rate']
+				dt.start_date = data['start_date']
+				dt.end_date = data['end_date']
+				dt.save()
+				x = dt.product_id
+				x.discount_rate = data['discount_rate']
+				x.save()
+		response = {'status': 1, 'message': "Ok"}
+		return HttpResponse(json.dumps(response), content_type='application/json')
+
 
 
 def proact_view(request,event_id):
@@ -167,7 +206,7 @@ def markdowns(request):
 	if request.method == 'POST':
 		print request.body
 		data = json.loads(request.body)
-		p = Promo_event(name=data['event_name'], event_type='Buddle selling', priority=data["priority"],start_date=data["start_date"], end_date=data["end_date"])
+		p = Promo_event(name=data['event_name'], event_type='Buddle selling', priority=data["priority"],start_date=data["start_date"], end_date=data["end_date"], staff = data["staff"])
 		p.save()
 		for  item in  data['data']:
 				x = Product.objects.get(product_name=item['name'])

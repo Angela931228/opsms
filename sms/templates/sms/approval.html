@@ -57,10 +57,61 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="/sms/"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="/sms/inventory_management/"><i class="glyphicon glyphicon-tasks"></i> Inventory Management</a></li>
-                    <li><a href="procurement_management.html"><i class="glyphicon glyphicon-tasks"></i>Procurement Management</a></li>
-                    <li><a href="staff_management.html"><i class="glyphicon glyphicon-tasks"></i> Staff Management</a></li>
-                    <li><a href="financial_management.html"><i class="glyphicon glyphicon-tasks"></i>Financial Management</a></li>
+
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Procurement Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="login.html">Supplier management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Procurement plan</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Assortment planning</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Purchase order management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Delivery tracking</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Goods reciepts management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Procurement return/replacement</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Inventory Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/sms/inventory_management/">stock management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">product managemenr</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Staff Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/staff_list">Staff list</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Role management</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Financial Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="/staff_list">Income and expenses</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Cash flow management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Financial statement</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Payroll management</a></li>
+                            <li><a href="/sms/sales_management/sales_analysis/">Product pricing</a></li>
+                        </ul>
+                    </li>
                     <li><a href="customer_management.html"><i class="glyphicon glyphicon-tasks"></i> Customer Management</a></li>
                     <li class="submenu">
                          <a href="#">
@@ -68,9 +119,11 @@
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
-                         <ul>
-                            <li><a href="login.html">Sales report</a></li>
+                        <ul>
+                            <li><a href="/sms/sales_management/sales_analysis/">Sales report</a></li>
                             <li><a href="/sms/sales_management/sales_analysis/">Sales analysis</a></li>
+                            <li><a href="/sms/sales_management/promo_analysis/">Promotion activity</a></li>
+                            <li><a href="/sms/sales_management/cal_pur/">Calculate and purchase</a></li>
                         </ul>
                     </li>
 
@@ -251,7 +304,7 @@
       </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="{% static 'sms/vendors/jquery.js'%}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'sms/bootstrap/js/bootstrap.min.js'%}"></script>
       <link rel="stylesheet" href="{% static 'sms/vendors/morris/morris.css'%}">
